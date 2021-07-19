@@ -9,7 +9,7 @@
 #include <random>
 #include <string>
 #include "./mydebug.cpp"
-#include "./myconst.cpp"
+#include "./myconst.hpp"
 
 static std::mt19937 _g(time(nullptr)); 
 inline long long int randint(long long int a, long long int b) { long long int w = (_g() << 31LL) ^ _g(); return a + w % (b - a + 1); }
