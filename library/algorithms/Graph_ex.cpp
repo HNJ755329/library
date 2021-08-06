@@ -1,16 +1,8 @@
 #include <bits/stdc++.h>
-#define REP(i, n) for(int i = 0;i < n;i++)
-#define INF 999999999
 
 using namespace std;
 using ll = long long int;
 using pii = pair<int, int>;
- 
-template<typename T, typename S> inline ostream& operator<<(ostream& os, const pair<T, S> p) { cout << "[" << p.first << ":" << p.second << "]"; return os; }
-template<typename T, typename S> inline ostream& operator<<(ostream& os, const map<T, S> m) { for(auto elem:m){cout << "[" << elem.first << ":" << elem.second << "]";} return os; }
-template<typename T, typename S> inline ostream& operator<<(ostream& os, const unordered_map<T, S> m) { for(auto elem:m){cout << "[" << elem.first << ":" << elem.second << "]";} return os; }
-template<typename T> inline ostream& operator<<(ostream& os, const vector<T>& v) { for (auto el : v) cout << el << " "; return os; }
-
 // ダイクストラ法：単一始点最短経路問題（負の閉路がない場合）, O(E * logV)
 // ベルマンフォード法：単一始点最短経路問題（負の閉路がある場合）, O(V*E)
 // ワーシャルフロイド法：全点対最短経路問題, O(V^3)

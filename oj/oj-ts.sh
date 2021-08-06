@@ -1,11 +1,12 @@
 # online-judgement-toolをまとめる
 function oj-s-cpp() {
     tmp_file="submit.cpp"
+    path_library="/home/yasu/Documents/library"
     submit_file=$1
     echo "--- oj submit cpp ---"
     echo "$(pwd)/"$submit_file
     echo "--- oj submit cpp ---"
-    oj-bundle $submit_file > $tmp_file
+    oj-bundle -I $path_library $submit_file > $tmp_file
     oj s $tmp_file -y --no-open -w 0
     rm $tmp_file
     echo $(oj-bundle -I $path_library $submit_file >$tmp_file)

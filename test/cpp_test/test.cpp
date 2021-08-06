@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include "template.hpp"
 using namespace std;
 
 int main()
@@ -8,6 +7,6 @@ int main()
     dq.push_front(1);
     dq.push_front(2);
     dq.back() += 10;
-    cout << dq << endl;
+    for(auto x:dq) cout << x << endl;
     return 0;
 }
