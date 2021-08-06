@@ -56,6 +56,10 @@ def remean_points(row):
     return row
 
 reviews.apply(remean_points, axis='columns')
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 ```
 mapとapplyでやりたいことはほぼ同じだが使用法が異なる．
 
@@ -104,4 +108,9 @@ left = canadian_youtube.set_index(['title', 'trending_date'])
 right = british_youtube.set_index(['title', 'trending_date'])
 
 left.join(right, lsuffix='_CAN', rsuffix='_UK')
+<<<<<<< HEAD
 ```
+=======
+```
+
+>>>>>>> main
