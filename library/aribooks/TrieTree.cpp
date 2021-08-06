@@ -11,7 +11,7 @@ struct Trie
         vector<int> accept;     // 末端がこの頂点になる文字列の str_id を保存
         int c;                  // base からの間隔をint型で表現したもの
         int common;             // いくつの文字列がこの頂点を共有しているか
-        vector<ll> common_char; //文字cを含む子孫の数
+        vector<long long int> common_char; //文字cを含む子孫の数
         Node(int c_) : c(c_), common(0)
         {
             next.assign(char_size, -1);

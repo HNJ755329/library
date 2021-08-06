@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include "../../00_Library/template.hpp"
 using namespace std;
 
 void debug_out() { cerr << endl; } 
