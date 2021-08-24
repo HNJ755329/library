@@ -67,4 +67,58 @@ vector<T> fast_zeta_transform(const vector<T> &f)
     return g;
 }
 ```
+## 高速メビウス変換
 
+```math
+g(S) = \sum_{T \in S} f(T)
+```
+
+```cpp
+template <typename T>
+vector<T> fast_mobius_transform_sos(const vector<T> &g)
+{
+    int n = g.size();
+    vector<T> f = g;
+    for (int i = 0; (1 << i) < n; ++i)
+    {
+        for (int bit = 0; bit < n; ++bit)
+        {
+            if ((bit >> i & 1))
+            {
+                f[bit] -= f[bit ^ (1 << i)];
+            }
+        }
+    }
+    return f;
+}
+```
+
+```math
+g(S) = \sum_{S \in T} f(T)
+```
+
+```cpp
+template <typename T>
+vector<T> fast_mobius_transform(const vector<T> &g)
+{
+    int n = g.size();
+    vector<T> f = g;
+    for (int i = 0; (1 << i) < n; ++i)
+    {
+        for (int bit = 0; bit < n; ++bit)
+        {
+            if (!(bit >> i & 1))
+            {
+                f[bit] -= f[bit | (1 << i)];
+            }
+        }
+    }
+    return f;
+}
+```
+
+## Reference
+
+- [Tutorial on Zeta Transform, Mobius Transform and Subset Sum Convolution](https://codeforces.com/blog/entry/72488)
+- [AtCoder頻出？貼るだけ高速ゼータ・メビウス変換＆約数拡張](https://habara-k.hatenadiary.jp/entry/2020/04/14/010237)
+- [ゼータ変換・メビウス変換を理解する](https://qiita.com/convexineq/items/afc84dfb9ee4ec4a67d5)
