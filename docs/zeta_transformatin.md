@@ -1,27 +1,25 @@
-# 高速ゼータ変換．高速メビウス変換
+# 高速ゼータ変換/高速メビウス変換
 
 高速ゼータ変換，高速メビウス変換の解説.
 Sの部分集合全体の和についての計算.
 
-```math
-g(S) = \sum_{T \in S} f(T)
-```
+![formula](https://render.githubusercontent.com/render/math?math=g(S)%20%3D%20\sum_{T%20\subset%20S}f(T))
 
 fが既知のとき，gを求めるのが高速ゼータ変換.
 逆にgが既知のときfを求めるのが高速メビウス変換.
 
-自然に実装すれば計算量はO(4^n)やO(3^n)で計算できるが
-高速ゼータ変換，高速メビウス変換では計算量がO(n2^n)で計算できる．
+自然に実装すれば計算量はO(4^n)やO(3^n)で計算できるが，
+高速ゼータ変換/高速メビウス変換を用いれば計算量がO(n*2^n)で計算できる．
 
-以下，実装．ただし，Sの部分集合全体について和をとるのか
-Sを含む部分集合全体について和をとるのかで少し異なる．
-本質的には同じだが分けて管理するほうが利用しやすいので分ける．
+以下実装．ただし，Sの部分集合全体について和をとるのか
+Sを含む集合全体について和をとるのかで少し異なる．
+本質的には同じだが分けて管理するほうが利用しやすいので分けてコードを書く．
 
 ## 高速ゼータ変換
 
-```math
-g(S) = \sum_{T \in S} f(T)
-```
+Sの部分集合全体についての和．
+
+![formula](https://render.githubusercontent.com/render/math?math=g(S)%20%3D%20\sum_{T%20\subset%20S}f(T))
 
 ```cpp
 template <typename T>
@@ -43,10 +41,10 @@ vector<T> fast_zeta_transform_sos(const vector<T> &f)
 }
 ```
 
+Sを含む集合全体の和．
 
-```math
-g(S) = \sum_{S \in T} f(T)
-```
+![formula](https://render.githubusercontent.com/render/math?math=g(S)%20%3D%20\sum_{S%20\subset%20T}f(T))
+
 
 ```cpp
 template <typename T>
@@ -69,9 +67,9 @@ vector<T> fast_zeta_transform(const vector<T> &f)
 ```
 ## 高速メビウス変換
 
-```math
-g(S) = \sum_{T \in S} f(T)
-```
+Sの部分集合全体についての和．
+
+![formula](https://render.githubusercontent.com/render/math?math=g(S)%20%3D%20\sum_{T%20\subset%20S}f(T))
 
 ```cpp
 template <typename T>
@@ -93,9 +91,10 @@ vector<T> fast_mobius_transform_sos(const vector<T> &g)
 }
 ```
 
-```math
-g(S) = \sum_{S \in T} f(T)
-```
+Sを含む集合全体の和．
+
+![formula](https://render.githubusercontent.com/render/math?math=g(S)%20%3D%20\sum_{S%20\subset%20T}f(T))
+
 
 ```cpp
 template <typename T>
