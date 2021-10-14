@@ -1,15 +1,15 @@
 #include <vector>
-using namespace std;
+#include <iostream>
 template <class T>
 struct Matrix
 {
-    vector<vector<T>> A;
+    std::vector<std::vector<T>> A;
 
     Matrix() {}
 
-    Matrix(size_t n, size_t m) : A(n, vector<T>(m, 0)) {}
+    Matrix(size_t n, size_t m) : A(n, std::vector<T>(m, 0)) {}
 
-    Matrix(size_t n) : A(n, vector<T>(n, 0)){};
+    Matrix(size_t n) : A(n, std::vector<T>(n, 0)){};
 
     size_t height() const
     {
@@ -18,15 +18,15 @@ struct Matrix
 
     size_t width() const
     {
-        return (A[0].size());
+        return (A.at(0).size());
     }
 
-    inline const vector<T> &operator[](int k) const
+    inline const std::vector<T> &operator[](int k) const
     {
         return (A.at(k));
     }
 
-    inline vector<T> &operator[](int k)
+    inline std::vector<T> &operator[](int k)
     {
         return (A.at(k));
     }
@@ -63,7 +63,7 @@ struct Matrix
     {
         size_t n = height(), m = B.width(), p = width();
         assert(p == B.height());
-        vector<vector<T>> C(n, vector<T>(m, 0));
+        std::vector<std::vector<T>> C(n, std::vector<T>(m, 0));
         for (int i = 0; i < n; i++)
             for (int j = 0; j < m; j++)
                 for (int k = 0; k < p; k++)
@@ -106,7 +106,7 @@ struct Matrix
         return (Matrix(*this) ^= k);
     }
 
-    friend ostream &operator<<(ostream &os, Matrix &p)
+    friend std::ostream &operator<<(std::ostream &os, Matrix &p)
     {
         size_t n = p.height(), m = p.width();
         for (int i = 0; i < n; i++)
