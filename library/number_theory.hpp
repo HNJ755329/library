@@ -1,5 +1,6 @@
 #include <map>
 #include <vector>
+#include <algorithm>
 namespace number_theory
 {
     template <typename T>
