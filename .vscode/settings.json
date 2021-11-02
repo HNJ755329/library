@@ -82,6 +82,8 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "convolution": "cpp"
+        "convolution": "cpp",
+        "all": "cpp",
+        "modint": "cpp"
     }
 }
