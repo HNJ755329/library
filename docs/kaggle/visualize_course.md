@@ -17,13 +17,16 @@ sns.barplot(x=flight_data.index, y=flight_data['NK'])
 sns.heatmap(data=flight_data, annot=True)
 
 # Scatter
-sns.scatterplot(x=insurance_data['bmi'], y=insurance_data['charges'])
 ## you might like to add a regression line
+sns.scatterplot(x=insurance_data['bmi'], y=insurance_data['charges'])
 sns.regplot(x=insurance_data['bmi'], y=insurance_data['charges'])
-#histogram
+
+# histogram
 sns.displot(df_train['SalePrice'])
 
-#skewness and kurtosis
+sns.boxplot(x=var, y="SalePrice", data=data)
+
+# skewness and kurtosis
 print("Skewness: %f" % df_train['SalePrice'].skew())
 print("Kurtosis: %f" % df_train['SalePrice'].kurt())
 ```
