@@ -34,7 +34,7 @@ struct Matrix
     static Matrix I(size_t n)
     {
         Matrix mat(n);
-        for (int i = 0; i < n; i++)
+        for (size_t i = 0; i < n; i++)
             mat[i][i] = 1;
         return (mat);
     }
@@ -43,8 +43,8 @@ struct Matrix
     {
         size_t n = height(), m = width();
         assert(n == B.height() && m == B.width());
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++)
+        for (size_t i = 0; i < n; i++)
+            for (size_t j = 0; j < m; j++)
                 (*this)[i][j] += B[i][j];
         return (*this);
     }
@@ -53,8 +53,8 @@ struct Matrix
     {
         size_t n = height(), m = width();
         assert(n == B.height() && m == B.width());
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++)
+        for (size_t i = 0; i < n; i++)
+            for (size_t j = 0; j < m; j++)
                 (*this)[i][j] -= B[i][j];
         return (*this);
     }
@@ -64,9 +64,9 @@ struct Matrix
         size_t n = height(), m = B.width(), p = width();
         assert(p == B.height());
         std::vector<std::vector<T>> C(n, std::vector<T>(m, 0));
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++)
-                for (int k = 0; k < p; k++)
+        for (size_t i = 0; i < n; i++)
+            for (size_t j = 0; j < m; j++)
+                for (size_t k = 0; k < p; k++)
                     C[i][j] = (C[i][j] + (*this)[i][k] * B[k][j]);
         A.swap(C);
         return (*this);
@@ -109,10 +109,10 @@ struct Matrix
     friend std::ostream &operator<<(std::ostream &os, Matrix &p)
     {
         size_t n = p.height(), m = p.width();
-        for (int i = 0; i < n; i++)
+        for (size_t i = 0; i < n; i++)
         {
             os << "[";
-            for (int j = 0; j < m; j++)
+            for (size_t j = 0; j < m; j++)
             {
                 os << p[i][j] << (j + 1 == m ? "]\n" : ",");
             }
@@ -125,10 +125,10 @@ struct Matrix
         Matrix B(*this);
         assert(width() == height());
         T ret = 1;
-        for (int i = 0; i < width(); i++)
+        for (size_t i = 0; i < width(); i++)
         {
             int idx = -1;
-            for (int j = i; j < width(); j++)
+            for (size_t j = i; j < width(); j++)
             {
                 if (B[j][i] != 0)
                     idx = j;
@@ -142,14 +142,14 @@ struct Matrix
             }
             ret *= B[i][i];
             T vv = B[i][i];
-            for (int j = 0; j < width(); j++)
+            for (size_t j = 0; j < width(); j++)
             {
                 B[i][j] /= vv;
             }
-            for (int j = i + 1; j < width(); j++)
+            for (size_t j = i + 1; j < width(); j++)
             {
                 T a = B[j][i];
-                for (int k = 0; k < width(); k++)
+                for (size_t k = 0; k < width(); k++)
                 {
                     B[j][k] -= B[i][k] * a;
                 }
