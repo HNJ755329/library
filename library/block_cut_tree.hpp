@@ -34,6 +34,7 @@ struct LowLink {
         if (ord[cur] < low[to])
           bridge.emplace_back(std::minmax(cur, to));
       } else if (to != par) {
+        low[cur] = std::min(low[cur], ord[to]);
       }
       if (par == -1)
         is_articulation |= cntChildren > 1;
